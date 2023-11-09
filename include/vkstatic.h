@@ -12,9 +12,9 @@ typedef struct {
 	VkSurfaceKHR surface;
 	VkPhysicalDevice pdev;
 	VkFormat depth_format;
-	VkPhysicalDeviceMemoryProperties pdev_memprop;
-	// TODO, remove this struct
-	VkhelperScsi scsi;
+	VkPhysicalDeviceMemoryProperties memprop;
+	VkSurfaceFormatKHR surface_format;
+	VkSurfaceCapabilitiesKHR surface_caps;
 	VkDevice device;
 	VkQueue queue;
 	VkCommandPool cpool;

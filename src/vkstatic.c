@@ -20,8 +20,10 @@ void vkstatic_init(
 	uint32_t family_idx;
 	vks->pdev = vkhelper_pdev_selector(instance, surface, &family_idx);
 	vkhelper_depth_format(vks->pdev, &vks->depth_format);
-	vkGetPhysicalDeviceMemoryProperties(vks->pdev, &vks->pdev_memprop);
-	vks->scsi = vkhelper_scsi(vks->pdev, vks->surface);
+	vkGetPhysicalDeviceMemoryProperties(vks->pdev, &vks->memprop);
+	vkhelper_scsi(
+		&vks->surface_format, &vks->surface_caps,
+		vks->pdev, vks->surface);
 	vkhelper_device(
 		&vks->device,
 		&vks->queue,
@@ -32,11 +34,11 @@ void vkstatic_init(
 	vks->cbuf = vkhelper_cbuf_new(vks->cpool, vks->device);
 }
 
-void vkstatic_deinit(Vkstatic* v) {
-	vkFreeCommandBuffers(v->device, v->cpool, 1, &v->cbuf);
-	vkDestroyCommandPool(v->device, v->cpool, NULL);
-	vkDestroyDevice(v->device, NULL);
-	vkDestroySurfaceKHR(v->instance, v->surface, NULL);
-	vkhelper_validation_destroy(v->instance, v->messenger);
-	vkDestroyInstance(v->instance, NULL);
+void vkstatic_deinit(Vkstatic* vks) {
+	vkFreeCommandBuffers(vks->device, vks->cpool, 1, &vks->cbuf);
+	vkDestroyCommandPool(vks->device, vks->cpool, NULL);
+	vkDestroyDevice(vks->device, NULL);
+	vkDestroySurfaceKHR(vks->instance, vks->surface, NULL);
+	vkhelper_validation_destroy(vks->instance, vks->messenger);
+	vkDestroyInstance(vks->instance, NULL);
 }
