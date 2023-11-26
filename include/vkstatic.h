@@ -26,5 +26,6 @@ void vkstatic_init(
 	VkSurfaceKHR surface
 );
 void vkstatic_deinit(Vkstatic* v);
+VkCommandBuffer vkstatic_begin(Vkstatic* vks);
 
 #endif

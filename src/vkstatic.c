@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <vulkan/vulkan.h>
 
 #include "../../vkhelper/include/cbuf.h"
@@ -41,4 +42,13 @@ void vkstatic_deinit(Vkstatic* vks) {
 	vkDestroySurfaceKHR(vks->instance, vks->surface, NULL);
 	vkhelper_validation_destroy(vks->instance, vks->messenger);
 	vkDestroyInstance(vks->instance, NULL);
+}
+
+VkCommandBuffer vkstatic_begin(Vkstatic* vks) {
+	VkCommandBufferBeginInfo cmdBufInfo = {
+		.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO,
+		.flags = VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT,
+	};
+	assert(0 == vkBeginCommandBuffer(vks->cbuf, &cmdBufInfo));
+	return vks->cbuf;
 }
