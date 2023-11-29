@@ -1,9 +1,7 @@
-#ifndef INCLUDEGUARD_VKSTATIC_VKSTATICH
-#define INCLUDEGUARD_VKSTATIC_VKSTATICH
+#ifndef INCLUDEGUARD_VKSTATIC
+#define INCLUDEGUARD_VKSTATIC
 
 #include <vulkan/vulkan.h>
-
-#include "../../vkhelper/include/scsi.h"
 
 typedef struct {
 	VkInstance instance;
@@ -27,5 +25,8 @@ void vkstatic_init(
 );
 void vkstatic_deinit(Vkstatic* v);
 VkCommandBuffer vkstatic_begin(Vkstatic* vks);
+
+VkCommandBuffer vkstatic_oneshot_begin(Vkstatic* vks);
+void vkstatic_oneshot_end(VkCommandBuffer cbuf, Vkstatic* vks);
 
 #endif

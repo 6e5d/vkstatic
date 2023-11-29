@@ -1,7 +1,6 @@
 #include <assert.h>
 #include <vulkan/vulkan.h>
 
-#include "../include/oneshot.h"
 #include "../include/vkstatic.h"
 
 // sync, so it is slow, for initialization only
