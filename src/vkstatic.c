@@ -1,13 +1,6 @@
-#include <assert.h>
 #include <vulkan/vulkan.h>
 
-#include "../../vkhelper/include/cbuf.h"
-#include "../../vkhelper/include/device.h"
-#include "../../vkhelper/include/instance.h"
-#include "../../vkhelper/include/pdev.h"
-#include "../../vkhelper/include/scsi.h"
-#include "../../vkhelper/include/semaphore.h"
-#include "../../vkhelper/include/validation.h"
+#include "../../vkhelper/include/vkhelper.h"
 #include "../include/vkstatic.h"
 
 void vkstatic_init(

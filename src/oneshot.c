@@ -1,4 +1,3 @@
-#include <assert.h>
 #include <vulkan/vulkan.h>
 
 #include "../include/vkstatic.h"
