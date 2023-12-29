@@ -16,17 +16,17 @@ typedef struct {
 	VkDevice device;
 	VkQueue queue;
 	VkCommandPool cpool;
-} Vkstatic;
+} Vkstatic();
 
-void vkstatic_init(
-	Vkstatic* vks,
+void vkstatic(init)(
+	Vkstatic()* vks,
 	VkInstance instance,
 	VkSurfaceKHR surface
 );
-void vkstatic_deinit(Vkstatic* v);
-VkCommandBuffer vkstatic_begin(Vkstatic* vks);
+void vkstatic(deinit)(Vkstatic()* v);
+VkCommandBuffer vkstatic(begin)(Vkstatic()* vks);
 
-VkCommandBuffer vkstatic_oneshot_begin(Vkstatic* vks);
-void vkstatic_oneshot_end(VkCommandBuffer cbuf, Vkstatic* vks);
+VkCommandBuffer vkstatic(oneshot_begin)(Vkstatic()* vks);
+void vkstatic(oneshot_end)(VkCommandBuffer cbuf, Vkstatic()* vks);
 
 #endif

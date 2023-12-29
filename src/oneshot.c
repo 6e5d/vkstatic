@@ -3,7 +3,7 @@
 #include "../include/vkstatic.h"
 
 // sync, so it is slow, for initialization only
-VkCommandBuffer vkstatic_oneshot_begin(Vkstatic* vks) {
+VkCommandBuffer vkstatic(oneshot_begin)(Vkstatic()* vks) {
 	VkCommandBuffer cbuf;
 	VkCommandBufferAllocateInfo info = {
 		.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO,
@@ -22,7 +22,7 @@ VkCommandBuffer vkstatic_oneshot_begin(Vkstatic* vks) {
 	return cbuf;
 }
 
-void vkstatic_oneshot_end(VkCommandBuffer cbuf, Vkstatic* vks) {
+void vkstatic(oneshot_end)(VkCommandBuffer cbuf, Vkstatic()* vks) {
 	assert(0 == vkEndCommandBuffer(cbuf));
 	VkSubmitInfo submitInfo = {
 		.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO,
