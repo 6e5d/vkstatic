@@ -1,6 +1,3 @@
-#ifndef INCLUDEGUARD_VKSTATIC
-#define INCLUDEGUARD_VKSTATIC
-
 #include <vulkan/vulkan.h>
 
 typedef struct {
@@ -28,5 +25,3 @@ VkCommandBuffer vkstatic(begin)(Vkstatic()* vks);
 
 VkCommandBuffer vkstatic(oneshot_begin)(Vkstatic()* vks);
 void vkstatic(oneshot_end)(VkCommandBuffer cbuf, Vkstatic()* vks);
-
-#endif
